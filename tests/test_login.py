@@ -1,9 +1,17 @@
 __author__ = 'miserylab'
 
+import os
 import allure
 import pytest
 from selene import have
 from selene.support.shared import browser
+from dotenv import load_dotenv
+
+load_dotenv()
+
+WRONG_EMAIL = os.getenv('wrong_email')
+EMAIL = os.getenv('email')
+PASSWORD = os.getenv('password')
 
 
 @pytest.mark.positive
@@ -15,8 +23,8 @@ def test_login_positive_on_login_page():
     with allure.step('Open login page'):
         browser.open('/pages/login/')
     with allure.step('Authorization'):
-        browser.element("[name='login']").type('miserylab.r6s@gmail.com')
-        browser.element('#open_pwd_main').type('akcyig3h')
+        browser.element("[name='login']").type(EMAIL)
+        browser.element('#open_pwd_main').type(PASSWORD)
         browser.element('#login_btn').click()
     with allure.step('Check profile name after auth'):
         browser.element('.Profile-module__name').should(have.text('test'))
@@ -32,9 +40,9 @@ def test_login_positive_in_window():
     with allure.step('Open login window'):
         browser.element("[href='/pages/login/']").hover().click()
         browser.element('.ButtonV1-module__button__orange').click()
-        browser.element("[name='email']").type('miserylab.r6s@gmail.com')
+        browser.element("[name='email']").type(EMAIL)
         browser.element(".ButtonV1-module__button__orange").click()
-        browser.element("[name='pwd']").type('akcyig3h')
+        browser.element("[name='pwd']").type(PASSWORD)
 
 @pytest.mark.negative
 @allure.tag('ui')
@@ -45,8 +53,8 @@ def test_login_negative_bad_login():
     with allure.step('Open login page'):
         browser.open('/pages/login/')
     with allure.step('Authorization'):
-        browser.element("[name='login']").type('miserylab.r6s@gmail.co')
-        browser.element('#open_pwd_main').type('akcyig3h')
+        browser.element("[name='login']").type(WRONG_EMAIL)
+        browser.element('#open_pwd_main').type(PASSWORD)
         browser.element('#login_btn').click()
     with allure.step('Check error text'):
         browser.element('.err_text').should(have.text('Логин невозможен (неверное сочетание логина и пароля)'))
