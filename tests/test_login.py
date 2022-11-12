@@ -3,8 +3,7 @@ __author__ = 'miserylab'
 import os
 import allure
 import pytest
-from selene import have
-from selene.support.shared import browser
+from litres_ui_tests.helpers import app
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,59 +18,60 @@ PASSWORD = os.getenv('password')
 @allure.epic('Authorization')
 @allure.title('Test login on login page(positive)')
 @allure.description('Пользователь существует в системе с введенным логином и паролем на странице авторизации')
-def test_login_positive_on_login_page():
+def test_login_positive_on_login_page(setup_browser):
+
     with allure.step('Open login page'):
-        browser.open('/pages/login/')
+        app.login_page.open()
     with allure.step('Authorization'):
-        browser.element("[name='login']").type(EMAIL)
-        browser.element('#open_pwd_main').type(PASSWORD)
-        browser.element('#login_btn').click()
+        app.authorization()
     with allure.step('Check profile name after auth'):
-        browser.element('.Profile-module__name').should(have.text('test'))
+        app.login_page.check_profile_name('test')
+
 
 @pytest.mark.positive
 @allure.tag('ui')
 @allure.epic('Authorization')
 @allure.title('Test login in window(positive)')
 @allure.description('Пользователь существует в системе с введенным логином и паролем в окне авторизации')
-def test_login_positive_in_window():
+def test_login_positive_in_window(setup_browser):
     with allure.step('Open main page'):
-        browser.open('/')
+        app.main_page.open()
     with allure.step('Open login window'):
-        browser.element("[href='/pages/login/']").hover().click()
-        browser.element('.ButtonV1-module__button__orange').click()
-        browser.element("[name='email']").type(EMAIL)
-        browser.element(".ButtonV1-module__button__orange").click()
-        browser.element("[name='pwd']").type(PASSWORD)
+        app.login_modal.open()
+    with allure.step('Check window is opened'):
+        app.login_modal.check_is_opened('Log in or sign up')
+
+    with allure.step('Click the "EMAIL ADDRESS" button'):
+        app.login_modal.click_email_button()
+
+    with allure.step('Type "EMAIL"'):
+        app.login_modal.type_login(EMAIL)
+
+    with allure.step('Click the "RESUME" button'):
+        app.login_modal.click_resume_button()
+
+    with allure.step('Type "PASSWORD"'):
+        app.login_modal.type_pwd(PASSWORD)
+    with allure.step('Click the "LOG IN" button'):
+        app.login_modal.click_login_button()
+
+    with allure.step('Close back up login pop-up'):
+        app.back_up_login_modal.close()
+
+    with allure.step('Check profile name after auth'):
+        app.login_page.check_profile_name('test')
 
 @pytest.mark.negative
 @allure.tag('ui')
 @allure.story('Authorization')
 @allure.title('Test login with bad login(negative)')
 @allure.description('Пользователь с введенным логином не существует в системе')
-def test_login_negative_bad_login():
+def test_login_negative_bad_login(setup_browser):
     with allure.step('Open login page'):
-        browser.open('/pages/login/')
+        app.login_page.open()
     with allure.step('Authorization'):
-        browser.element("[name='login']").type(WRONG_EMAIL)
-        browser.element('#open_pwd_main').type(PASSWORD)
-        browser.element('#login_btn').click()
+        app.login_page.type_login(WRONG_EMAIL)
+        app.login_page.type_pwd(PASSWORD)
+        app.login_page.click_login_button()
     with allure.step('Check error text'):
-        browser.element('.err_text').should(have.text('Логин невозможен (неверное сочетание логина и пароля)'))
-
-
-# @allure.tag('ui')
-# @allure.story('Authorization')
-# @allure.title('Test login with bad password(negative)')
-# @allure.description('Пользователь с введенным логином существует в системе, но пароль неверный')
-# def test_login_negative_bad_password():
-#     with step('Open login page'):
-#         browser.open('/pages/login/')
-#     with step('Authorization'):
-#         browser.element("[name='login']").type('miserylab.r6s@gmail.com')
-#         browser.element('#open_pwd_main').type('111')
-#         browser.element('#login_btn').click()
-#     with step('Check error text'):
-#         browser.element('.err_text').should(have.text('Логин невозможен (неверное сочетание логина и пароля)'))
-
-
+        app.login_page.check_error('Login impossible (incorrect combination of login and password)')
