@@ -53,7 +53,7 @@ pytest .
 
 [Back to the table of contents ⬆](#TableOfContents)
 
-## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-mobile-test-project/)</a>
+## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-ui-test-project/)</a>
 Main page of the build:
 
 **_image_**
@@ -100,7 +100,7 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 
 [Back to the table of contents ⬆](#TableOfContents)
 
-# <a name="Jira">[Jira](https://jira.autotests.cloud/browse/HOMEWORK-424) integration</a>
+# <a name="Jira">[Jira](https://jira.autotests.cloud/browse/HOMEWORK-423) integration</a>
 > The link can be accessed only by authorized users.
 
 **_image_**
