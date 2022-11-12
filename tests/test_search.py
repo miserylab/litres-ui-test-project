@@ -14,6 +14,7 @@ NO_RESULTS = os.getenv('no_results')
 @allure.title('Test search(results exists)')
 @allure.description('результаты существуют')
 def test_search_results_exists(setup_browser):
+    browser = setup_browser
     with allure.step('Open main page'):
         app.main_page.open()
     with allure.step('Type search values'):
@@ -39,6 +40,7 @@ def test_search_results_exists(setup_browser):
 @allure.title('Test search(results not exists)')
 @allure.description('результаты не существуют + корректное сообщение о пустом результате')
 def test_search_results_not_exists(setup_browser):
+    browser = setup_browser
     with allure.step('Open main page'):
         app.main_page.open()
     with allure.step('Type search values'):

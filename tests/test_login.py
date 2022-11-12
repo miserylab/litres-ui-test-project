@@ -19,6 +19,7 @@ PASSWORD = os.getenv('password')
 @allure.title('Test login on login page(positive)')
 @allure.description('Пользователь существует в системе с введенным логином и паролем на странице авторизации')
 def test_login_positive_on_login_page(setup_browser):
+    browser = setup_browser
 
     with allure.step('Open login page'):
         app.login_page.open()
@@ -34,6 +35,7 @@ def test_login_positive_on_login_page(setup_browser):
 @allure.title('Test login in window(positive)')
 @allure.description('Пользователь существует в системе с введенным логином и паролем в окне авторизации')
 def test_login_positive_in_window(setup_browser):
+    browser = setup_browser
     with allure.step('Open main page'):
         app.main_page.open()
     with allure.step('Open login window'):
@@ -67,6 +69,7 @@ def test_login_positive_in_window(setup_browser):
 @allure.title('Test login with bad login(negative)')
 @allure.description('Пользователь с введенным логином не существует в системе')
 def test_login_negative_bad_login(setup_browser):
+    browser = setup_browser
     with allure.step('Open login page'):
         app.login_page.open()
     with allure.step('Authorization'):

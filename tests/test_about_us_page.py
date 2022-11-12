@@ -8,6 +8,7 @@ from litres_ui_tests.helpers import app
 @allure.title('Test search(results exists)')
 @allure.description('результаты существуют')
 def test_check_about_us_top_section(setup_browser):
+    browser = setup_browser
 
     with allure.step('Open about us page'):
         app.about_us_page.open()
