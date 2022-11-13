@@ -1,15 +1,10 @@
-__author__ = 'miserylab'
-
 import os
 import pytest
-from selenium.webdriver.chrome.options import Options
-from litres_ui_tests.utils import attach
-from dotenv import load_dotenv
-
 from selene.support.shared import browser
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from dotenv import load_dotenv
+from litres_ui_tests.utils import attach
 
 
 @pytest.fixture(scope='session', autouse=True)
@@ -18,38 +13,19 @@ def load_env():
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management():
-    options = webdriver.ChromeOptions()
-    options.add_experimental_option(
-        "prefs", {"profile.default_content_setting_values.notifications": 2}
-    )
-
-    browser.config.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
+def browser_config():
     browser.config.base_url = os.getenv('base_url')
-    browser.config.hold_browser_open = False
-    browser.config.window_height = 2000
+    browser.config.browser_name = os.getenv('browser_name')
     browser.config.window_width = 2000
-
-
-DEFAULT_BROWSER_VERSION = "100.0"
-
-
-# def pytest_addoption(parser):
-#     parser.addoption(
-#         '--browser_version',
-#         default='100.0'
-#     )
+    browser.config.window_height = 2000
 
 
 @pytest.fixture(scope='function')
 def setup_browser(request):
-    # browser_version = request.config.getoption('--browser_version')
-    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
-        "browserVersion": 106.0,
+        "browserVersion": '100.0',
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -71,5 +47,4 @@ def setup_browser(request):
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
-
     browser.quit()

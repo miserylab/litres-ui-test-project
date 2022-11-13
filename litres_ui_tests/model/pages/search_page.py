@@ -1,6 +1,7 @@
 from selene.support.shared import browser
 from selene import have
 
+
 class SearchPage:
 
     def check_search_results(self, value):

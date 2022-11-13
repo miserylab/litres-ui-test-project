@@ -4,7 +4,7 @@ from selene.support.shared import browser
 
 class LoginPage:
 
-    def open(self):
+    def open(self, browser):
         browser.open('/pages/login/')
         return self
 
@@ -28,9 +28,10 @@ class LoginPage:
         browser.element('.err_text').should(have.text(value))
         return self
 
+
 class LoginModal:
 
-    def open(self):
+    def open(self, browser):
         browser.element("[href='/pages/login/']").hover().click()
         return self
 

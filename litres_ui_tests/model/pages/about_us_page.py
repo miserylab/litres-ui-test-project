@@ -4,7 +4,7 @@ from selene.support.shared import browser
 
 class AboutUsPage:
 
-    def open(self):
+    def open(self, browser):
         browser.open('/about-us/')
         return self
 
