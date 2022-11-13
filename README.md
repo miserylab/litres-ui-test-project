@@ -82,7 +82,7 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 
 [Back to the table of contents ⬆](#TableOfContents)
 
-# <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-mobile-test-project/12/allure/)</a>
+# <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-ui-test-project/17/allure/)</a>
 
 <p align="center">
   <img src="resources/images/allure1.png" alt="AllureReport1">
@@ -104,7 +104,7 @@ Also additional test artifacts are available:
 
 [Back to the table of contents ⬆](#TableOfContents)
 
-# <a name="AllureTestOps">[Allure TestOps](https://allure.autotests.cloud/project/1659/dashboards) integration</a>
+# <a name="AllureTestOps">[Allure TestOps](https://allure.autotests.cloud/project/1658/dashboards) integration</a>
 > The link can be accessed only by authorized users.
 
 ## <a name="AllureTestOpsProject">Project in Allure TestOps</a>
