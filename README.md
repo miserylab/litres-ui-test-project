@@ -56,14 +56,18 @@ pytest .
 ## <a name="RunInJenkins">Run in [Jenkins](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-ui-test-project/)</a>
 Main page of the build:
 
-**_image_**
+<p  align="center">
+  <img src="resources/images/jenkins1.png" alt="JenkinsBuild"/>
+</p>
 
 
 After the build is done the test results are available in:
 >- <code><strong>*Allure Report*</strong></code>
 >- <code><strong>*Allure TestOps*</strong></code>
 
-**_image_**
+<p  align="center">
+  <img src="resources/images/jenkins2.png" alt="JenkinsBuild"/>
+</p>
 
 
 [Back to the table of contents ⬆](#TableOfContents)
@@ -71,18 +75,32 @@ After the build is done the test results are available in:
 
 # <a name="TelegramNotifications">Telegram Notifications</a>
 Telegram bot sends a brief report to a specified telegram chat by results of each build.
-
+<p  align="center">
+<img src="resources/images/telegram.png" alt="TelegramNotification" >
+</p>
 
 
 [Back to the table of contents ⬆](#TableOfContents)
 
 # <a name="AllureReport">Test results report in [Allure Report](https://jenkins.autotests.cloud/job/C01-miserylab-python_litres-mobile-test-project/12/allure/)</a>
 
-**_image_**
+<p align="center">
+  <img src="resources/images/allure1.png" alt="AllureReport1">
+</p>
 
-**_image_**
+<p align="center">
+  <img src="resources/images/allure2.png" alt="AllureReport1">
+</p>
 
-**_image_**
+Also additional test artifacts are available:
+>- Page Source
+>- Screenshot
+>- Browser logs
+>- Video
+
+<p align="center">
+  <img src="resources/images/allure3.png" alt="AllureReport1">
+</p>
 
 [Back to the table of contents ⬆](#TableOfContents)
 
@@ -91,11 +109,17 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 
 ## <a name="AllureTestOpsProject">Project in Allure TestOps</a>
 
-**_image_**
+<p align="center">
+  <img src="resources/images/testops1.png" alt="Allure Report"/>
+</p>
 
-**_image_**
+<p align="center">
+  <img src="resources/images/testops2.png" alt="Allure Report"/>
+</p>
 
-**_image_**
+<p align="center">
+  <img src="resources/images/testops3.png" alt="Allure Report"/>
+</p>
 
 
 [Back to the table of contents ⬆](#TableOfContents)
@@ -103,16 +127,16 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 # <a name="Jira">[Jira](https://jira.autotests.cloud/browse/HOMEWORK-423) integration</a>
 > The link can be accessed only by authorized users.
 
-**_image_**
+<p align="center">
+  <img src="resources/images/jira.png" alt="Jira integration"/>
+</p>
 
 [Back to the table of contents ⬆](#TableOfContents)
 
 
 # <a name="Video">Video of running tests</a>
 
-**_video_**
-
-
+https://user-images.githubusercontent.com/95403808/201524887-0593a812-b18d-4a54-b8c9-440c7f2623ec.mp4
 
 [Back to the table of contents ⬆](#TableOfContents)
 
