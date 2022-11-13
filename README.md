@@ -110,8 +110,7 @@ Telegram bot sends a brief report to a specified telegram chat by results of eac
 
 # <a name="Video">Video of running tests</a>
 
-**_video_**
-
+https://user-images.githubusercontent.com/95403808/201524887-0593a812-b18d-4a54-b8c9-440c7f2623ec.mp4
 
 
 [Back to the table of contents ⬆](#TableOfContents)
