@@ -18,6 +18,7 @@ def browser_config():
     browser.config.browser_name = os.getenv('browser_name')
     browser.config.window_width = 2000
     browser.config.window_height = 2000
+    browser.config.hold_browser_open = True
 
 
 @pytest.fixture(scope='function')

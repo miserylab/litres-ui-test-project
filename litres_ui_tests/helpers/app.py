@@ -5,6 +5,7 @@ from litres_ui_tests.model.pages.login_page import LoginModal
 from litres_ui_tests.model.pages.login_page import BackUpLogin
 from litres_ui_tests.model.pages.main_page import MainPage
 from litres_ui_tests.model.pages.search_page import SearchPage
+import allure
 
 from dotenv import load_dotenv
 
@@ -23,8 +24,9 @@ PASSWORD = os.getenv('password')
 
 
 def authorization():
-    login_page.type_login(EMAIL)
-    login_page.type_pwd(PASSWORD)
-    login_page.click_login_button()
+    with allure.step('Authorization'):
+        login_page.type_login(EMAIL)
+        login_page.type_pwd(PASSWORD)
+        login_page.click_login_button()
 
 

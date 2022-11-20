@@ -1,11 +1,15 @@
 from selene.support.shared import browser
+import allure
+
+
 
 
 class MainPage:
 
     def open(self, browser):
-        browser.open('/')
-        return self
+        with allure.step('Open main page'):
+            browser.open('/')
+            return self
 
     def search(self, value):
         browser.element("[name='q']").type(value)
